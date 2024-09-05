@@ -2,6 +2,7 @@ import express, { Router } from "express";
 import { createNino, deleteNino, getNino, updateNino } from "./controllers/controller_nino";
 import { generateToken } from "./controllers/controller_user";
 import { authenticateToken } from "./middleware/authnToknMiddleware";
+import { errorHandler } from "./middleware/error";
 
 require('dotenv').config();
 
@@ -19,6 +20,7 @@ objectNinoRoute.put('/update_informacion_nino/:id', authenticateToken, updateNin
 userRoutes.post('/api/login', generateToken)
 
 app.use(express.json());
+app.use(errorHandler);
 app.use(objectNinoRoute);
 app.use(userRoutes);
 
