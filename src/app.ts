@@ -1,7 +1,7 @@
 import express, { Router } from "express";
 import { createNino, deleteNino, getNino, updateNino } from "./controllers/controller_nino";
 import { generateToken } from "./controllers/controller_user";
-import { authenticateToken } from "./middleware/authnToknMiddleware";
+import { authenticateToken } from "./middleware/authorization_ToknMiddl";
 import { errorHandler } from "./middleware/error";
 
 require('dotenv').config();
