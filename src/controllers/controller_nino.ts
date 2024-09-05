@@ -35,6 +35,24 @@ export const createNino = async (req: Request, res: Response): Promise<Response>
 };
 
 /**
+ * Function GET Object NINO
+ * @param require
+ * @param response
+ * return Table informacion_nino
+ */
+export const getNino = async(req: Request, res: Response): Promise<Response> =>{
+    try {
+        const response: QueryResult = await pool.query('SELECT * FROM informacion_nino;');
+        return res.status(200).json(response.rows);
+    } catch (error) {
+        console.error(console);
+        return res.status(500).json('Internal Error Server');
+    }
+}
+
+
+
+/**
  * Function for eliminate a Object NINO
  * @param req 
  * @param res 
@@ -50,7 +68,6 @@ export const deleteNino = async (req: Request, res: Response): Promise<Response>
         return res.status(500).json('Internal Server Error');
     }
 }
-
 
 /**
  * UPDATE OBJECT NINO FUNCTION 

@@ -1,7 +1,6 @@
 import express, { Router } from "express";
-import bodyParser from "body-parser";
-import pool from "./database/db_connect";
-import { createNino, deleteNino, updateNino } from "./controllers/controller_nino";
+import { createNino, deleteNino, getNino, updateNino } from "./controllers/controller_nino";
+import { authenticateToken, generateToken } from "./controllers/controller_user";
 
 require('dotenv').config();
 
@@ -9,12 +8,18 @@ const app = express();
 const port = process.env.PORT;
 
 const objectNinoRoute = Router();
-objectNinoRoute.post('/create_informacion_nino', createNino);
-objectNinoRoute.delete('/delete_informacion_nino/:id', deleteNino);
-objectNinoRoute.put('/update_informacion_nino/:id', updateNino);
+const userRoutes = Router();
+
+objectNinoRoute.post('/create_informacion_nino', authenticateToken, createNino);
+objectNinoRoute.get('/get_informacion_nino', authenticateToken, getNino);
+objectNinoRoute.delete('/delete_informacion_nino/:id', authenticateToken, deleteNino);
+objectNinoRoute.put('/update_informacion_nino/:id', authenticateToken, updateNino);
+
+userRoutes.post('/api/login', generateToken)
 
 app.use(express.json());
 app.use(objectNinoRoute);
+app.use(userRoutes);
 
 app.listen(port, ()=>{
     return console.log(`Example app listening on port ${port}`)
