@@ -5,8 +5,8 @@ require('dotenv').config();
 
 export const generateToken = (req: Request, res: Response): Response =>{
     const userName = req.body.username;
-    /*const password = req.body.password;
-    console.log(req.body);*/
+    const password = req.body.password;
+    console.log(req.body);
     const user = {name: userName};
     const accessToken = jwt.sign(user, `${process.env.CLAVE_JWT}`, {expiresIn: '1h'});
     return res.status(200).json({accessToken});
