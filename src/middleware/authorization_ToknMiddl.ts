@@ -10,6 +10,7 @@ export const authenticateToken = (req: Request, res: Response, next: NextFunctio
         return res.status(401).json({error: 'Auth Token Not Found'});
     }
     jwt.verify(token, `${process.env.CLAVE_JWT}`, (err, user) =>{
+        console.log(user);
         if(err){
             return res.status(403).json({error: 'Invalid Token'})
         }
