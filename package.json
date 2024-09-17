@@ -4,9 +4,10 @@
   "description": "Projecto Página Web Jardín Infantil La Guardería con Node.JS, Typescript y Express.JS",
   "main": "index.js",
   "scripts": {
-    "start": "tsc && Node lib/app.js",
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "tsc"
+    "build": "tsc",
+    "start": "node lib/app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+    
   },
   "repository": {
     "type": "git",
