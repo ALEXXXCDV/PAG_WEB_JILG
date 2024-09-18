@@ -2,7 +2,7 @@
   "name": "pag_web_jardin_cami_dev",
   "version": "1.0.0",
   "description": "Projecto Página Web Jardín Infantil La Guardería con Node.JS, Typescript y Express.JS",
-  "main": "index.js",
+  "main": "app.js",
   "scripts": {
     "build": "tsc",
     "start": "node lib/app.js",
