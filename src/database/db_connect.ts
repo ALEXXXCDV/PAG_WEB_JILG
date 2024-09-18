@@ -4,9 +4,7 @@ require('dotenv').config();
 
 let pool: Pool;
 
-console.log(process.env.PRODUCTION);
-
-if (process.env.PRODUCTION === 'true') {
+if (process.env.PRODUCTION) {
     pool = new Pool({
         connectionString: process.env.POSTGRES_URL,
         ssl: {
